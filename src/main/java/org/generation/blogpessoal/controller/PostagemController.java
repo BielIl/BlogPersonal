@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,9 +36,9 @@ public class PostagemController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/title/{title}")
-	public ResponseEntity<List<Postagem>> GetByTitle(@PathVariable String title){
-		return ResponseEntity.ok(repository.findAllByTitlePostContainingIgnoreCase(title));
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<Postagem>> GetByTitle(@PathVariable String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloPostagemContainingIgnoreCase(titulo));
 	}
 	
 	@PostMapping("/save")
@@ -48,5 +49,10 @@ public class PostagemController {
 	@PutMapping("/edit")
 	public ResponseEntity<Postagem> put (@RequestBody Postagem postagem){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public void delete(@PathVariable long id) {
+		repository.deleteById(id);
 	}
 }

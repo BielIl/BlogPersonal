@@ -18,41 +18,41 @@ public class Postagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idPost;
+	private long id;
 	
 	@NotNull
 	@Size(min = 1, max = 128)
-	private String titlePost;
+	private String tituloPostagem;
 	
 	@NotNull
 	@Size(min = 1, max = 512)
-	private String textPost;
+	private String textoPostagem;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datePost = new java.sql.Date(System.currentTimeMillis());
 
-	public long getIdPost() {
-		return idPost;
+	public long getIdPostagem() {
+		return id;
 	}
 
-	public void setIdPost(long idPost) {
-		this.idPost = idPost;
+	public void setIdPostagem(long idPostagem) {
+		this.id = idPostagem;
 	}
 
-	public String getTitlePost() {
-		return titlePost;
+	public String getTituloPostagem() {
+		return tituloPostagem;
 	}
 
-	public void setTitlePost(String titlePost) {
-		this.titlePost = titlePost;
+	public void setTituloPostagem(String tituloPostagem) {
+		this.tituloPostagem = tituloPostagem;
 	}
 
-	public String getTextPost() {
-		return textPost;
+	public String getTextoPostagem() {
+		return textoPostagem;
 	}
 
-	public void setTextPost(String textPost) {
-		this.textPost = textPost;
+	public void setTextoPostagem(String textoPostagem) {
+		this.textoPostagem = textoPostagem;
 	}
 
 	public Date getDatePost() {
@@ -63,5 +63,4 @@ public class Postagem {
 		this.datePost = datePost;
 	}
 
-	
 }
