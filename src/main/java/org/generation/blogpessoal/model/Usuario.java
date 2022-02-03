@@ -15,15 +15,15 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@Size(min = 3, max = 100)
 	private String nome;
-	
+
 	@NotNull
 	@Size(min = 5, max = 100)
 	private String usuario;
-	
+
 	@NotNull
 	@Size(min = 5, max = 100)
 	private String senha;
@@ -59,6 +59,5 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
+
 }

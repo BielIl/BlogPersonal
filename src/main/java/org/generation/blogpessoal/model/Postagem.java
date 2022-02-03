@@ -30,7 +30,7 @@ public class Postagem {
 	@NotNull
 	@Size(min = 1, max = 512)
 	private String textoPostagem;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("Postagem")
 	private Tema tema;

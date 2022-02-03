@@ -17,25 +17,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/usuario")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
-	
+
     @Autowired
     private UsuarioService usuarioService;
-    
+
     @PostMapping("/logar")
-    public ResponseEntity<UserLogin> auth (@RequestBody Optional<UserLogin> logar){
+    public ResponseEntity<UserLogin> auth(@RequestBody Optional<UserLogin> logar) {
         return usuarioService.logar(logar).map(resp -> ResponseEntity.ok(resp))
                 .orElse(ResponseEntity.status(401).build());
     }
 
     /**
      * metedo utilizado pra receber usuario do front-end pra BD
+     * 
      * @param usuario
      * @return ResponseEntity<Usuario>
      * @Auto Gabriel
      * @since version mk.1 - 2022-02-02
      */
     @PostMapping("/cadastrar")
-    public ResponseEntity<Usuario> save (@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
         return usuarioService.CadastrarUsuario(usuario);
     }
 
