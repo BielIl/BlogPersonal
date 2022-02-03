@@ -17,11 +17,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService);
-	}
-
 	@Bean
 	public PasswordEncoder passwoodEncoder() {
 		return new BCryptPasswordEncoder();
@@ -38,4 +33,12 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().cors()
 				.and().csrf().disable();
 	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
+		auth.inMemoryAuthentication()
+				.withUser("root").password(passwoodEncoder().encode("root")).authorities("ADMIN");
+	}
+
 }
