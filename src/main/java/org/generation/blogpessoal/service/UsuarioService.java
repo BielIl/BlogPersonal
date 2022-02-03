@@ -7,6 +7,8 @@ import org.generation.blogpessoal.model.UserLogin;
 import org.generation.blogpessoal.model.Usuario;
 import org.generation.blogpessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +18,18 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
-	public Usuario CadastrarUsuario(Usuario usuario) {
+	public ResponseEntity<Usuario> CadastrarUsuario(Usuario usuario) {
+
+		Optional<Usuario> optional = repository.findByUsuario(usuario.getUsuario());
+			if (optional.isPresent()){
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+			}
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
 		
-		return repository.save(usuario);
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
 	
 	public Optional<UserLogin> logar (Optional<UserLogin> user){
