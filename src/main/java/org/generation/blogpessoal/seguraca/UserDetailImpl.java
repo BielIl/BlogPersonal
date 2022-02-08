@@ -1,26 +1,28 @@
 package org.generation.blogpessoal.seguraca;
 
 import java.util.Collection;
+import java.util.List;
+
 import org.generation.blogpessoal.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserDetailsImpl implements UserDetails {
+public class UserDetailImpl implements UserDetails {
+
+	private static final long serialVersionUID = 1L;
 
 	private String userName;
 	private String password;
+	private List<GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Usuario user) {
+	public UserDetailImpl(Usuario user) {
 		this.userName = user.getUsuario();
 		this.password = user.getSenha();
 	}
 
-	public UserDetailsImpl() {
-	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		return authorities;
 	}
 
 	@Override

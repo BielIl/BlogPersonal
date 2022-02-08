@@ -1,19 +1,18 @@
 package org.generation.blogpessoal.model;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "tbPostagens")
@@ -30,18 +29,18 @@ public class Postagem {
 	@NotBlank(message = "O atributo texto é Obrigatório!")
 	@Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
 	private String textoPostagem;
-	
+
 	@UpdateTimestamp
 	private LocalDate data;
 
 	@ManyToOne
 	@JsonIgnoreProperties("Postagem")
 	private Tema tema;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
-	
+
 	/* Getters and Setters */
 
 	public long getIdPostagem() {
@@ -68,12 +67,12 @@ public class Postagem {
 		this.textoPostagem = textoPostagem;
 	}
 
-	public Date getDatePost() {
-		return datePost;
+	public LocalDate getData() {
+		return data;
 	}
 
-	public void setDatePost(Date datePost) {
-		this.datePost = datePost;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 
 	public Tema getTema() {
@@ -83,5 +82,9 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
+
+    public Long getId() {
+        return null;
+    }
 
 }
