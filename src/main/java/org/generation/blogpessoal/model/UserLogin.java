@@ -10,6 +10,8 @@ public class UserLogin {
 
 	private String token;
 
+	/* Getters and Setters */
+	
 	public String getNome() {
 		return nome;
 	}
