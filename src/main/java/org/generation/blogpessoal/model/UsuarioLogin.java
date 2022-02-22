@@ -14,6 +14,8 @@ public class UsuarioLogin {
 
 	private String token;
 
+	private String tipo;
+
 	/* Insira os Getters and Setters */
 
 	public long getId() {
@@ -64,4 +66,11 @@ public class UsuarioLogin {
 		this.senha = senha;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 }

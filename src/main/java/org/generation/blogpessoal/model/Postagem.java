@@ -83,8 +83,8 @@ public class Postagem {
 		this.tema = tema;
 	}
 
-    public Long getId() {
-        return null;
-    }
+	public Long getId() {
+		return null;
+	}
 
 }
