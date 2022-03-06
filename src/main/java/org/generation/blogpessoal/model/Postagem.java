@@ -42,13 +42,13 @@ public class Postagem {
 	private Usuario usuario;
 
 	/* Getters and Setters */
-
-	public long getIdPostagem() {
+	
+	public long getId() {
 		return id;
 	}
 
-	public void setIdPostagem(long idPostagem) {
-		this.id = idPostagem;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getTituloPostagem() {
@@ -83,8 +83,15 @@ public class Postagem {
 		this.tema = tema;
 	}
 
-	public Long getId() {
-		return null;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	
+
+	
 }
